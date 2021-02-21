@@ -3,8 +3,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //讀輸入血型
-    @IBOutlet var bloodTexField: [UITextField]!
+    
     //顯示小孩可能血型
     @IBOutlet weak var viewTatle: UILabel!
     var parentsBloodArray = [String]() //存輸入父母的血型
@@ -29,7 +28,7 @@ class ViewController: UIViewController {
             viewTatle.text = "B,O"
         case "ABO","OAB":
             viewTatle.text = "A,B"
-        case "O":
+        case "OO":
             viewTatle.text = "O"
         default:
             viewTatle.text = "請輸入正確血型"
@@ -39,19 +38,48 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    //確定按鈕
-    @IBAction func enter(_ sender: UIButton) {
-        //將讀到輸入的血型，存入array
-        blood01 = bloodTexField[0].text!
-        parentsBloodArray.append(blood01)
-        blood02 = bloodTexField[1].text!
-        parentsBloodArray.append(blood02)
-        judgmentBloodFunc() //判斷血型
-        
-        
-        
-        
+    //爸爸血型選擇
+    @IBAction func dodBlood(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            blood01 = sender.titleForSegment(at: 0)!
+            print(blood01)
+        case 1:
+            blood01 = sender.titleForSegment(at: 1)!
+            print(blood01)
+        case 2:
+            blood01 = sender.titleForSegment(at: 2)!
+            print(blood01)
+        case 3:
+            blood01 = sender.titleForSegment(at: 3)!
+            print(blood01)
+        default:
+            break
+        }
+        judgmentBloodFunc()
+    }
+    //媽媽血型選擇
+    @IBAction func momBlood(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            blood02 = sender.titleForSegment(at: 0)!
+            print(blood02)
+        case 1:
+            blood02 = sender.titleForSegment(at: 1)!
+            print(blood02)
+        case 2:
+            blood02 = sender.titleForSegment(at: 2)!
+            print(blood02)
+        case 3:
+            blood02 = sender.titleForSegment(at: 3)!
+            print(blood02)
+        default:
+            break
+        }
+        judgmentBloodFunc()
     }
     
-}
+    }
+    
+
 
